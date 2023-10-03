@@ -1,6 +1,6 @@
-package com.qxy.elder;
+package com.qxy.elder.portal.interceptor;
 
-import com.qxy.elder.vo.UserLoginInterceptor;
+import com.qxy.elder.portal.interceptor.UserLoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

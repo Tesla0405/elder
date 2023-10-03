@@ -1,4 +1,4 @@
-package com.qxy.elder.vo;
+package com.qxy.elder.portal.interceptor;
 
 import com.qxy.elder.consts.MallConst;
 import com.qxy.elder.portal.exception.UserLoginException;
@@ -26,8 +26,6 @@ public class UserLoginInterceptor implements HandlerInterceptor {
         if(user == null){
             log.info("user=null");
             throw new UserLoginException();
-//            return false;
-//            return ResponseVo.error(ResponseEnum.NEED_LOGIN);
         }
         return true;
     }
