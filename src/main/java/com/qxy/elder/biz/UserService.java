@@ -49,6 +49,7 @@ public class UserService {
                 .id(userPo.getId())
                 .username(userPo.getUsername())
                 .name(userPo.getName())
+                .role(userPo.getRole())
                 .build();
     }
 
@@ -58,5 +59,22 @@ public class UserService {
                 .where(user.username.eq(username))
                 .where(user.isDeleted.eq(0))
                 .fetchOne();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public UserDto getUserDtoByUserId(Long id) {
+        Assert.notNull(id, "用户id不可为空");
+        UserPo userPo = mqf.selectFrom(user)
+                .where(user.id.eq(id))
+                .where(user.isDeleted.eq(0))
+                .fetchOne();
+        return UserDto.builder()
+                .id(userPo.getId())
+                .username(userPo.getUsername())
+                .name(userPo.getName())
+                .role(userPo.getRole())
+                .ctime(userPo.getCtime())
+                .mtime(userPo.getMtime())
+                .build();
     }
 }

@@ -1,11 +1,10 @@
 package com.qxy.elder.portal.util;
 
-import com.qxy.elder.api.dto.LoginDto;
-import com.qxy.elder.api.dto.UserDto;
-import com.qxy.elder.api.dto.UserSaveDto;
-import com.qxy.elder.portal.controller.vo.LoginVo;
-import com.qxy.elder.portal.controller.vo.UserInfoVo;
-import com.qxy.elder.portal.controller.vo.UserSaveVo;
+import com.qxy.elder.api.dto.*;
+import com.qxy.elder.enums.UserRoleEnum;
+import com.qxy.elder.portal.controller.vo.*;
+
+import java.util.Objects;
 
 public class MappingUtil {
 
@@ -24,13 +23,63 @@ public class MappingUtil {
                 .build();
     }
 
-//    UserInfoVo UserDto
       public static UserInfoVo convertUserDto2Vo(UserDto userDto){
         return UserInfoVo.builder()
                 .name(userDto.getName())
                 .id(userDto.getId())
                 .username(userDto.getUsername())
+                .role(userDto.getRole())
+                .roleDesc(UserRoleEnum.getByCode(userDto.getRole()).getDesc())
                 .build();
       }
+
+      public static ElderInfoSaveDto convertElderInfoSaveVo2Dto(ElderInfoSaveVo saveVo) {
+        return ElderInfoSaveDto.builder()
+                .userId(saveVo.getUserId())
+                .name(saveVo.getName())
+                .sex(saveVo.getSex())
+                .birth(saveVo.getBirth())
+                .idCard(saveVo.getIdCard())
+                .build();
+      }
+
+      public static ElderInfoVo convertElderInfoDto2Vo(ElderInfoDto infoDto) {
+        if (Objects.isNull(infoDto)) {
+            return null;
+        }
+        return ElderInfoVo.builder()
+                .name(infoDto.getName())
+                .sex(infoDto.getSex())
+                .birth(infoDto.getBirth())
+                .idCard(infoDto.getIdCard())
+                .ctime(infoDto.getCtime())
+                .mtime(infoDto.getMtime())
+                .build();
+      }
+
+      public static VolunteerInfoSaveDto convertVolunteerInfoSaveVo2Dto(VolunteerInfoSaveVo saveVo) {
+        return VolunteerInfoSaveDto.builder()
+                .userId(saveVo.getUserId())
+                .name(saveVo.getName())
+                .sex(saveVo.getSex())
+                .birth(saveVo.getBirth())
+                .idCard(saveVo.getIdCard())
+                .tags(saveVo.getTags())
+                .build();
+      }
+
+    public static VolunteerInfoVo convertVolunteerInfoDto2Vo(VolunteerInfoDto infoDto) {
+        if (Objects.isNull(infoDto)) {
+            return null;
+        }
+        return VolunteerInfoVo.builder()
+                .name(infoDto.getName())
+                .sex(infoDto.getSex())
+                .birth(infoDto.getBirth())
+                .idCard(infoDto.getIdCard())
+                .ctime(infoDto.getCtime())
+                .mtime(infoDto.getMtime())
+                .build();
+    }
 
 }

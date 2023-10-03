@@ -38,6 +38,8 @@ public class QUser extends com.querydsl.sql.RelationalPathBase<UserPo> {
 
     public final StringPath password = createString("password");
 
+    public final NumberPath<Integer> role = createNumber("role", Integer.class);
+
     public final StringPath username = createString("username");
 
     public final com.querydsl.sql.PrimaryKey<UserPo> primary = createPrimaryKey(id);
@@ -74,6 +76,7 @@ public class QUser extends com.querydsl.sql.RelationalPathBase<UserPo> {
         addMetadata(mtime, ColumnMetadata.named("mtime").withIndex(4).ofType(Types.TIMESTAMP).withSize(19).notNull());
         addMetadata(name, ColumnMetadata.named("name").withIndex(5).ofType(Types.VARCHAR).withSize(100).notNull());
         addMetadata(password, ColumnMetadata.named("password").withIndex(7).ofType(Types.VARCHAR).withSize(100).notNull());
+        addMetadata(role, ColumnMetadata.named("role").withIndex(8).ofType(Types.INTEGER).withSize(10).notNull());
         addMetadata(username, ColumnMetadata.named("username").withIndex(6).ofType(Types.VARCHAR).withSize(100).notNull());
     }
 

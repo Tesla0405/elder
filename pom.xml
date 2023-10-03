@@ -88,6 +88,18 @@
 			<artifactId>querydsl-jpa</artifactId>
 			<version>${querydsl.version}</version>
 		</dependency>
+
+		<!-- swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -120,7 +132,7 @@
 					<beanPackageName>com.qxy.elder.dao.querydsl.pos</beanPackageName>
 					<beanSuffix>Po</beanSuffix>
 					<beanAddToString>true</beanAddToString>
-					<tableNamePattern>user</tableNamePattern>
+					<tableNamePattern>volunteer</tableNamePattern>
 					<numericMappings>
 						<numericMapping>
 							<total>1</total>

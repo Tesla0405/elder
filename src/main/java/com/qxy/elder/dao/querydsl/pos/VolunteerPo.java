@@ -3,10 +3,10 @@ package com.qxy.elder.dao.querydsl.pos;
 import javax.annotation.Generated;
 
 /**
- * ElderPo is a Querydsl bean type
+ * VolunteerPo is a Querydsl bean type
  */
 @Generated("com.querydsl.codegen.BeanSerializer")
-public class ElderPo {
+public class VolunteerPo {
 
     private java.sql.Date birth;
 
@@ -23,6 +23,8 @@ public class ElderPo {
     private String name;
 
     private Integer sex;
+
+    private String tags;
 
     private Long userId;
 
@@ -90,6 +92,14 @@ public class ElderPo {
         this.sex = sex;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
     public Long getUserId() {
         return userId;
     }
@@ -100,7 +110,7 @@ public class ElderPo {
 
     @Override
     public String toString() {
-         return "birth = " + birth + ", ctime = " + ctime + ", id = " + id + ", idCard = " + idCard + ", isDeleted = " + isDeleted + ", mtime = " + mtime + ", name = " + name + ", sex = " + sex + ", userId = " + userId;
+         return "birth = " + birth + ", ctime = " + ctime + ", id = " + id + ", idCard = " + idCard + ", isDeleted = " + isDeleted + ", mtime = " + mtime + ", name = " + name + ", sex = " + sex + ", tags = " + tags + ", userId = " + userId;
     }
 
 }

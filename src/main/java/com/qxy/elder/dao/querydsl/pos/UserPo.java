@@ -20,6 +20,8 @@ public class UserPo {
 
     private String password;
 
+    private Integer role;
+
     private String username;
 
     public java.sql.Timestamp getCtime() {
@@ -70,6 +72,14 @@ public class UserPo {
         this.password = password;
     }
 
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -80,7 +90,7 @@ public class UserPo {
 
     @Override
     public String toString() {
-         return "ctime = " + ctime + ", id = " + id + ", isDeleted = " + isDeleted + ", mtime = " + mtime + ", name = " + name + ", password = " + password + ", username = " + username;
+         return "ctime = " + ctime + ", id = " + id + ", isDeleted = " + isDeleted + ", mtime = " + mtime + ", name = " + name + ", password = " + password + ", role = " + role + ", username = " + username;
     }
 
 }

@@ -1,7 +1,7 @@
 package com.qxy.elder.dao.querydsl;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
-import com.qxy.elder.dao.querydsl.pos.ElderPo;
+import com.qxy.elder.dao.querydsl.pos.VolunteerPo;
 
 
 import com.querydsl.core.types.dsl.*;
@@ -17,14 +17,14 @@ import java.sql.Types;
 
 
 /**
- * QElder is a Querydsl query type for ElderPo
+ * QVolunteer is a Querydsl query type for VolunteerPo
  */
 @Generated("com.querydsl.sql.codegen.MetaDataSerializer")
-public class QElder extends com.querydsl.sql.RelationalPathBase<ElderPo> {
+public class QVolunteer extends com.querydsl.sql.RelationalPathBase<VolunteerPo> {
 
-    private static final long serialVersionUID = -1891101313;
+    private static final long serialVersionUID = 602797055;
 
-    public static final QElder elder = new QElder("elder");
+    public static final QVolunteer volunteer = new QVolunteer("volunteer");
 
     public final DatePath<java.sql.Date> birth = createDate("birth", java.sql.Date.class);
 
@@ -42,32 +42,34 @@ public class QElder extends com.querydsl.sql.RelationalPathBase<ElderPo> {
 
     public final NumberPath<Integer> sex = createNumber("sex", Integer.class);
 
+    public final StringPath tags = createString("tags");
+
     public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
-    public final com.querydsl.sql.PrimaryKey<ElderPo> primary = createPrimaryKey(id);
+    public final com.querydsl.sql.PrimaryKey<VolunteerPo> primary = createPrimaryKey(id);
 
-    public QElder(String variable) {
-        super(ElderPo.class, forVariable(variable), "null", "elder");
+    public QVolunteer(String variable) {
+        super(VolunteerPo.class, forVariable(variable), "null", "volunteer");
         addMetadata();
     }
 
-    public QElder(String variable, String schema, String table) {
-        super(ElderPo.class, forVariable(variable), schema, table);
+    public QVolunteer(String variable, String schema, String table) {
+        super(VolunteerPo.class, forVariable(variable), schema, table);
         addMetadata();
     }
 
-    public QElder(String variable, String schema) {
-        super(ElderPo.class, forVariable(variable), schema, "elder");
+    public QVolunteer(String variable, String schema) {
+        super(VolunteerPo.class, forVariable(variable), schema, "volunteer");
         addMetadata();
     }
 
-    public QElder(Path<? extends ElderPo> path) {
-        super(path.getType(), path.getMetadata(), "null", "elder");
+    public QVolunteer(Path<? extends VolunteerPo> path) {
+        super(path.getType(), path.getMetadata(), "null", "volunteer");
         addMetadata();
     }
 
-    public QElder(PathMetadata metadata) {
-        super(ElderPo.class, metadata, "null", "elder");
+    public QVolunteer(PathMetadata metadata) {
+        super(VolunteerPo.class, metadata, "null", "volunteer");
         addMetadata();
     }
 
@@ -80,6 +82,7 @@ public class QElder extends com.querydsl.sql.RelationalPathBase<ElderPo> {
         addMetadata(mtime, ColumnMetadata.named("mtime").withIndex(8).ofType(Types.TIMESTAMP).withSize(19).notNull());
         addMetadata(name, ColumnMetadata.named("name").withIndex(2).ofType(Types.VARCHAR).withSize(10).notNull());
         addMetadata(sex, ColumnMetadata.named("sex").withIndex(3).ofType(Types.TINYINT).withSize(3).notNull());
+        addMetadata(tags, ColumnMetadata.named("tags").withIndex(10).ofType(Types.VARCHAR).withSize(1024).notNull());
         addMetadata(userId, ColumnMetadata.named("user_id").withIndex(9).ofType(Types.BIGINT).withSize(19).notNull());
     }
 

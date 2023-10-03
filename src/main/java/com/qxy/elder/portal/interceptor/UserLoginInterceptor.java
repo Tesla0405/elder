@@ -1,6 +1,7 @@
 package com.qxy.elder.portal.interceptor;
 
 import com.qxy.elder.consts.MallConst;
+import com.qxy.elder.portal.controller.vo.UserInfoVo;
 import com.qxy.elder.portal.exception.UserLoginException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -17,14 +18,13 @@ public class UserLoginInterceptor implements HandlerInterceptor {
      * @param response
      * @param handler
      * @return
-     * @throws Exception
      */
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         log.info("preHandle...");
-        Long user = (Long) request.getSession().getAttribute(MallConst.CURRENT_USER);
-        if(user == null){
-            log.info("user=null");
+        Long userId = (Long) request.getSession().getAttribute(MallConst.CURRENT_USER);
+        if(userId == null){
+            log.info("userId=null");
             throw new UserLoginException();
         }
         return true;
