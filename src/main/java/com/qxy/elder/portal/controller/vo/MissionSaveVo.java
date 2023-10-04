@@ -13,17 +13,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class UserInfoVo {
-    @ApiModelProperty("用户id")
+public class MissionSaveVo {
+    @ApiModelProperty("任务id 新建时为空")
     private Long id;
-    @ApiModelProperty("用户昵称")
+    @ApiModelProperty("任务名称")
     private String name;
-    @ApiModelProperty("用户名")
-    private String username;
-    @ApiModelProperty("用户时间币余额")
-    private Long timeCoin;
-    @ApiModelProperty("用户角色")
-    private Integer role;
-    @ApiModelProperty("用户角色描述 0-志愿者 1-老人")
-    private String roleDesc;
+    @ApiModelProperty("任务内容")
+    private String content;
+    @ApiModelProperty("任务标签")
+    private String tags;
+    @ApiModelProperty("任务时间币")
+    private Long timeCoinPrice;
 }

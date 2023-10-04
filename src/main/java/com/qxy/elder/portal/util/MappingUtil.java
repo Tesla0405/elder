@@ -28,6 +28,7 @@ public class MappingUtil {
                 .name(userDto.getName())
                 .id(userDto.getId())
                 .username(userDto.getUsername())
+                .timeCoin(userDto.getTimeCoin())
                 .role(userDto.getRole())
                 .roleDesc(UserRoleEnum.getByCode(userDto.getRole()).getDesc())
                 .build();
@@ -82,4 +83,48 @@ public class MappingUtil {
                 .build();
     }
 
+    public static MissionSaveDto convertMissionSaveVo2Dto(MissionSaveVo saveVo, Long userId) {
+        return MissionSaveDto.builder()
+                .id(saveVo.getId())
+                .publishUserId(userId)
+                .name(saveVo.getName())
+                .content(saveVo.getContent())
+                .tags(saveVo.getTags())
+                .timeCoinPrice(saveVo.getTimeCoinPrice())
+                .build();
+    }
+
+    public static MissionInfoVo convertMissionInfoDto2Vo(MissionInfoDto missionInfoDto) {
+        return MissionInfoVo.builder()
+                .id(missionInfoDto.getId())
+                .name(missionInfoDto.getName())
+                .publishUserId(missionInfoDto.getPublishUserId())
+                .accomplishUserId(missionInfoDto.getAccomplishUserId())
+                .content(missionInfoDto.getContent())
+                .missionStatus(missionInfoDto.getMissionStatus())
+                .missionStatusDesc(missionInfoDto.getMissionStatusDesc())
+                .timeCoinPrice(missionInfoDto.getTimeCoinPrice())
+                .ctime(missionInfoDto.getCtime())
+                .mtime(missionInfoDto.getMtime())
+                .build();
+    }
+
+    public static CommentCreateDto convertCommentCreateDto2Vo(CommentCreateVo createVo, Long userId) {
+        return CommentCreateDto.builder()
+                .userId(userId)
+                .missionId(createVo.getMissionId())
+                .content(createVo.getContent())
+                .build();
+    }
+
+    public static CommentInfoVo convertCommentInfoDto2Vo(CommentInfoDto commentInfoDto) {
+        return CommentInfoVo.builder()
+                .id(commentInfoDto.getId())
+                .userId(commentInfoDto.getUserId())
+                .missionId(commentInfoDto.getMissionId())
+                .content(commentInfoDto.getContent())
+                .ctime(commentInfoDto.getCtime())
+                .mtime(commentInfoDto.getMtime())
+                .build();
+    }
 }

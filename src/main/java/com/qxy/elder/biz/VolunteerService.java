@@ -1,11 +1,9 @@
 package com.qxy.elder.biz;
 
 import com.querydsl.sql.SQLQueryFactory;
-import com.qxy.elder.api.dto.ElderInfoDto;
 import com.qxy.elder.api.dto.UserDto;
 import com.qxy.elder.api.dto.VolunteerInfoDto;
 import com.qxy.elder.api.dto.VolunteerInfoSaveDto;
-import com.qxy.elder.dao.querydsl.pos.ElderPo;
 import com.qxy.elder.dao.querydsl.pos.VolunteerPo;
 import com.qxy.elder.enums.UserRoleEnum;
 import com.qxy.elder.enums.VolunteerTagEnum;
@@ -23,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static com.qxy.elder.dao.querydsl.QElder.elder;
 import static com.qxy.elder.dao.querydsl.QVolunteer.volunteer;
 
 @Service
@@ -44,7 +41,7 @@ public class VolunteerService {
         Assert.notNull(saveDto.getSex(), "志愿者性别不可为空");
         Assert.notNull(saveDto.getBirth(), "志愿者生日不可为空");
         Assert.hasText(saveDto.getIdCard(), "志愿者身份证号码不可为空");
-        if (!StringUtils.hasText(saveDto.getTags())) {
+        if (StringUtils.hasText(saveDto.getTags())) {
             String[] tagArr = saveDto.getTags().split(",");
             Arrays.asList(tagArr).forEach(VolunteerTagEnum::getByValue);
         }

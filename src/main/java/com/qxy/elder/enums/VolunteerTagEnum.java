@@ -14,6 +14,8 @@ public enum VolunteerTagEnum {
     TRAVEL(3, "出行"),
 
     NURSE(4, "护理"),
+
+    OTHERS(5, "其他"),
     ;
 
     @Getter

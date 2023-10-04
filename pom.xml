@@ -132,7 +132,7 @@
 					<beanPackageName>com.qxy.elder.dao.querydsl.pos</beanPackageName>
 					<beanSuffix>Po</beanSuffix>
 					<beanAddToString>true</beanAddToString>
-					<tableNamePattern>volunteer</tableNamePattern>
+					<tableNamePattern>comment</tableNamePattern>
 					<numericMappings>
 						<numericMapping>
 							<total>1</total>

@@ -6,7 +6,6 @@ import com.qxy.elder.api.dto.ElderInfoSaveDto;
 import com.qxy.elder.api.dto.UserDto;
 import com.qxy.elder.dao.querydsl.pos.ElderPo;
 import com.qxy.elder.enums.UserRoleEnum;
-import com.qxy.elder.portal.controller.vo.ElderInfoSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +13,6 @@ import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;

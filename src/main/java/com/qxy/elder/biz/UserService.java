@@ -4,7 +4,6 @@ import com.querydsl.sql.SQLQueryFactory;
 import com.qxy.elder.api.dto.LoginDto;
 import com.qxy.elder.api.dto.UserDto;
 import com.qxy.elder.api.dto.UserSaveDto;
-import com.qxy.elder.dao.querydsl.pos.ElderPo;
 import com.qxy.elder.dao.querydsl.pos.UserPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.Objects;
 
-import static com.qxy.elder.dao.querydsl.QElder.elder;
 import static com.qxy.elder.dao.querydsl.QUser.user;
 
 @Service
@@ -72,9 +70,49 @@ public class UserService {
                 .id(userPo.getId())
                 .username(userPo.getUsername())
                 .name(userPo.getName())
+                .timeCoin(userPo.getTimeCoin())
                 .role(userPo.getRole())
                 .ctime(userPo.getCtime())
                 .mtime(userPo.getMtime())
                 .build();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void costTimeCoin(Long timeCoin, Long userId) {
+        Assert.notNull(timeCoin, "时间币额不可为空");
+        Assert.isTrue(timeCoin > 0, "时间额不可小于0");
+        UserDto userDto = getUserDtoByUserId(userId);
+        Assert.notNull(userDto, "用户不存在");
+        Assert.isTrue(userDto.getTimeCoin() > timeCoin, "当前余额已不足"  + timeCoin + "支付时间币失败");
+        long value = userDto.getTimeCoin() - timeCoin;        updateTimeCoin(timeCoin, userId);
+        updateTimeCoin(value, userId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void earnTimeCoin(Long timeCoin, Long userId) {
+        Assert.notNull(timeCoin, "时间币额不可为空");
+        Assert.isTrue(timeCoin > 0, "时间额不可小于0");
+        UserDto userDto = getUserDtoByUserId(userId);
+        Assert.notNull(userDto, "用户不存在");
+        long value = userDto.getTimeCoin() + timeCoin;
+        updateTimeCoin(value, userId);
+    }
+
+    private void updateTimeCoin(Long timeCoin, Long userId) {
+        mqf.update(user)
+                .where(user.id.eq(userId))
+                .where(user.isDeleted.eq(0))
+                .set(user.timeCoin, timeCoin)
+                .execute();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void transferTimeCoin(Long timeCoin, Long fromUserId, Long toUserId) {
+        Assert.notNull(timeCoin, "转增时间币额不可为空");
+        Assert.isTrue(timeCoin > 0, "转增时间币额必须大于0");
+        Assert.notNull(fromUserId, "转增发起用户id不可为空");
+        Assert.notNull(toUserId, "转增接受id不可为空");
+        costTimeCoin(timeCoin, fromUserId);
+        earnTimeCoin(timeCoin, toUserId);
     }
 }

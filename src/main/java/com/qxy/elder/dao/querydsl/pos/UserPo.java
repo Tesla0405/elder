@@ -22,6 +22,8 @@ public class UserPo {
 
     private Integer role;
 
+    private Long timeCoin;
+
     private String username;
 
     public java.sql.Timestamp getCtime() {
@@ -80,6 +82,14 @@ public class UserPo {
         this.role = role;
     }
 
+    public Long getTimeCoin() {
+        return timeCoin;
+    }
+
+    public void setTimeCoin(Long timeCoin) {
+        this.timeCoin = timeCoin;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -90,7 +100,7 @@ public class UserPo {
 
     @Override
     public String toString() {
-         return "ctime = " + ctime + ", id = " + id + ", isDeleted = " + isDeleted + ", mtime = " + mtime + ", name = " + name + ", password = " + password + ", role = " + role + ", username = " + username;
+         return "ctime = " + ctime + ", id = " + id + ", isDeleted = " + isDeleted + ", mtime = " + mtime + ", name = " + name + ", password = " + password + ", role = " + role + ", timeCoin = " + timeCoin + ", username = " + username;
     }
 
 }

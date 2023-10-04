@@ -13,17 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class UserInfoVo {
-    @ApiModelProperty("用户id")
-    private Long id;
-    @ApiModelProperty("用户昵称")
-    private String name;
-    @ApiModelProperty("用户名")
-    private String username;
-    @ApiModelProperty("用户时间币余额")
-    private Long timeCoin;
-    @ApiModelProperty("用户角色")
-    private Integer role;
-    @ApiModelProperty("用户角色描述 0-志愿者 1-老人")
-    private String roleDesc;
+public class CommentCreateVo {
+    @ApiModelProperty("任务id")
+    private Long missionId;
+    @ApiModelProperty("评论内容")
+    private String content;
 }
