@@ -5,6 +5,7 @@ import com.qxy.elder.api.dto.LoginDto;
 import com.qxy.elder.api.dto.UserDto;
 import com.qxy.elder.api.dto.UserSaveDto;
 import com.qxy.elder.dao.querydsl.pos.UserPo;
+import com.qxy.elder.enums.UserRoleEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,7 @@ public class UserService {
         Assert.isTrue(StringUtils.hasText(userSaveDto.getUsername()), "用户名不可为空");
         Assert.isTrue(StringUtils.hasText(userSaveDto.getName()), "昵称不可为空");
         Assert.isTrue(StringUtils.hasText(userSaveDto.getPassword()), "密码不可为空");
+        UserRoleEnum.getByCode(userSaveDto.getRole());
         UserPo userPo = getUserPoByUsername(userSaveDto.getUsername());
         Assert.isNull(userPo, "该用户名已存在" + userSaveDto.getUsername());
         return mqf.insert(user)

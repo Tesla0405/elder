@@ -12,8 +12,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
         registry.addInterceptor(new UserLoginInterceptor())
                 .addPathPatterns("/web_api/**")
                 .excludePathPatterns(
-                        "/*/login",
-                        "/*/register");
+                        "/**/login",
+                        "/**/register");
     }
 
 }

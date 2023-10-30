@@ -13,6 +13,7 @@ public class MappingUtil {
                 .name(saveVo.getName())
                 .username(saveVo.getUsername())
                 .password(saveVo.getPassword())
+                .role(saveVo.getRole())
                 .build();
     }
 

@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "时间币转账")
-    @RequestMapping(value = "/logout", method = RequestMethod.PUT)
+    @RequestMapping(value = "/transfer", method = RequestMethod.PUT)
     public ResponseVo<Object> transferTimeCoin(@RequestBody TimeCoinTransferVo transferVo,
                                                @ApiIgnore HttpSession session) {
         Long userId = (Long) session.getAttribute(ElderConstants.CURRENT_USER);

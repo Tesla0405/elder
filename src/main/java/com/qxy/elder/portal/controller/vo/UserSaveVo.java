@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class UserSaveVo {
     private Long id;
     private String name;
+    private Integer role;
     private String username;
     private String password;
 }
